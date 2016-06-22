@@ -3,7 +3,7 @@
 #include <dirent.h>
 int main(int argc, char* argv[]){
     DIR* dir;
-    struct dirent dirptr;
+    struct dirent *dirptr;
     if (argc < 2){
         printf("Usage: ./name_of_of <directory_name>\n");
         return EXIT_FAILURE;
