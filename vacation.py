@@ -1,16 +1,31 @@
-Y = 2021
+Y = 2014
 A = 7
 B = 9
-W = 4
+W = 'Wednesday'
 
 
 def solution(Y, A, B, W):
     # write your code in Python 3.6
 
     month = [0,31,28,31,30,31,30,31,31,30,31,30,31]
-    first_mondays = [W]
-    last_sunday = []
-    first_monday = W
+    days = [
+        'Monday',
+        'Tuesday',
+        'Wednesday',
+        'Thursday',
+        'Friday',
+        'Saturday',
+        'Sunday',
+    ]
+
+
+    first_monday = 0
+    if W == 'Monday':
+        first_monday = 1
+        first_mondays = [1]
+    else:
+        first_mondays = [8-days.index(W)]
+        first_monday = 8 - days.index(W)
 
     for x in range(1,B):
 
@@ -36,8 +51,12 @@ def solution(Y, A, B, W):
     else:
         last_sunday = sunday
 
+    sum_days = first_mondays[A-1] + last_sunday
+    for x in range(A+1,B):
+        sum_days = sum_days + month[x]
     
-    return [first_mondays[A-1],last_sunday]
+    return sum_days / 7
 
 
+    
 print(solution(Y,A,B,W))
